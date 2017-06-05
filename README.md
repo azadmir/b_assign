@@ -12,7 +12,7 @@ Next future is POST request with a name of a person in the body returns "Hello {
 php 5.6
 
 
-##Continuous Integration
+## Continuous Integration
 
 For the continuous integration Teamcity 2017.1.2 was used.
 Under Project 'B Assign' four build configurations were defined: Dev, Test, Demo, Prod.
@@ -24,10 +24,10 @@ Test and Demo builds are not triggering if previous build is failed.
 Running of Prod build must be initiated manually through Teamcity Web GUI.
 The builds are deploying to the following environment, which is created in Microsoft Azure and using WebApp services:
 
-http://devbassign.azurewebsites.net
-http://testbassign.azurewebsites.net
-http://demobassign.azurewebsites.net
-http://prodbassign.azurewebsites.net
+* http://devbassign.azurewebsites.net
+* http://testbassign.azurewebsites.net
+* http://demobassign.azurewebsites.net
+* http://prodbassign.azurewebsites.net
 
 Teamcity's  projects and builds configurations are located in the tc_confs directory.
 Azure Web Apps profiles also have been published and located in the azure_confs directory.
