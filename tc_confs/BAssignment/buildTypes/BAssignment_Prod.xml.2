@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="cd467ddc-cedc-459b-85be-a515dcdfe4ec" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
+  <name>Prod</name>
+  <description />
+  <settings>
+    <options>
+      <option name="buildNumberPattern" value="1.0.%build.counter%" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="vcsTrigger" />
+    </disabled-settings>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_1" name="Deploy to the prod environments in Azure" type="ftp-deploy-runner">
+        <parameters>
+          <param name="jetbrains.buildServer.deployer.ftp.authMethod" value="USER_PWD" />
+          <param name="jetbrains.buildServer.deployer.ftp.ftpMode" value="PASSIVE" />
+          <param name="jetbrains.buildServer.deployer.ftp.securityMode" value="2" />
+          <param name="jetbrains.buildServer.deployer.ftp.transferMethod" value="AUTO" />
+          <param name="jetbrains.buildServer.deployer.sourcePath"><![CDATA[+:**/*  => /site/wwwroot
+-:.git  => /site/wwwroot]]></param>
+          <param name="jetbrains.buildServer.deployer.targetUrl" value="waws-prod-am2-125.ftp.azurewebsites.windows.net" />
+          <param name="jetbrains.buildServer.deployer.username" value="prodbassign\ftpazure_dev" />
+          <param name="secure:jetbrains.buildServer.deployer.password" value="zxx2c30c3cf9e56ea4bbf8c6dfc8640fa40" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="BAssignment_HttpsGithubComAzadmirBAssignRefsHeadsMaster" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="branchFilter" value="+:*" />
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+
