@@ -1,4 +1,9 @@
 <?php
-echo 'Hello World!';
+
+function foo($name){
+        return 'Hello ' . htmlspecialchars($name) . ' World!';
+}
+
+echo foo($_POST["name"]);
 
 ?>
